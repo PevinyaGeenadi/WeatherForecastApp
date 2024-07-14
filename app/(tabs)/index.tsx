@@ -2,10 +2,11 @@ import { View, Text, SafeAreaView,StyleSheet,StatusBar, Image,TextInput,Touchabl
 import React , { useState }from 'react'
 import { Ionicons } from '@expo/vector-icons';
 
+ 
 
 export default function index() {
   const [showSearch, toggleSearch] = useState(false);
-  return (
+   return (
     
     <SafeAreaView style={ styles.container }>
         <StatusBar barStyle="light-content" /> 
@@ -57,6 +58,7 @@ const styles = StyleSheet.create({
     height: '7%',
     marginHorizontal: '4%',
     zIndex: 50,
+    marginTop: '12%',
   },
   searchBar: {
     flexDirection: 'row',
