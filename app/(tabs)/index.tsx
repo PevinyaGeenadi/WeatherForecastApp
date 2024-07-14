@@ -8,7 +8,7 @@ export default function index() {
         <StatusBar barStyle="light-content" /> 
         <Image 
             blurRadius={86}
-            source={require('../../assets/images/bg5.png')}
+            source={require('../../assets/images/bg3.png')}
             style={styles.image}
         />
     </SafeAreaView>
