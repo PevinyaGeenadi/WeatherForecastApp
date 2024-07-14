@@ -18,8 +18,10 @@ export default function index() {
         <SafeAreaView style={styles.innerContainer}>
         {/* This is the search section bar */}
         <View style={styles.searchSection}>
-          <View style={styles.searchBar}>
-          {showSearch ? (
+        <View style={[styles.searchBar, 
+          { backgroundColor: showSearch ? 'rgba(255, 255, 255, 0.5)' : 'transparent' }]}>
+           
+            {showSearch ? (
               <TextInput
                 placeholder="Search city"
                 placeholderTextColor="lightgray"
@@ -53,12 +55,14 @@ const styles = StyleSheet.create({
   innerContainer: {
     flex: 1,
     flexDirection: 'column',
+    
   },
   searchSection: {
     height: '7%',
     marginHorizontal: '4%',
     zIndex: 50,
-    marginTop: '12%',
+    marginTop: '14%',
+  
   },
   searchBar: {
     flexDirection: 'row',
@@ -70,7 +74,7 @@ const styles = StyleSheet.create({
   textInput: {
     paddingLeft: 16,
     paddingRight: 16,
-    paddingVertical: 10,
+    paddingVertical: 1,
     flex: 1,
     fontSize: 16,
     color: 'white',
