@@ -229,11 +229,12 @@ const styles = StyleSheet.create({
   weatherImage: {
     height: 240,
     width: 240,
+    
   },
   temperatureContainer: {
     alignItems: 'center',
     marginVertical: 2,
-    top: 0,
+    
   },
   temperatureText: {
     fontWeight: 'bold',
