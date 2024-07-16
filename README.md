@@ -11,5 +11,5 @@ A beautifully designed React Native weather app that displays current weather an
 
 ## 📸 Screenshots
 
-![Weather App Home](./assets/images/home.jpeg)
+![Weather App Home](./assets/images/home1.jpeg)
 

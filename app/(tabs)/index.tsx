@@ -14,7 +14,7 @@ export default function index() {
     <SafeAreaView style={ styles.container }>
         <StatusBar barStyle="light-content" /> 
         <Image 
-            blurRadius={80}
+            blurRadius={50}
             source={require('../../assets/images/bg5.png')}
             style={styles.image}
         />
@@ -48,7 +48,7 @@ export default function index() {
                       style={[styles.locationItem, borderClass]}
                       onPress={() => handleLocation(loc)}>
                       <FontAwesome name="map-marker" size={20} color="gray" />
-                      <Text style={styles.locationText}>New York, USA</Text>
+                      <Text style={styles.locationText1}>New York, USA</Text>
                     </TouchableOpacity>
                   );
                 })}
@@ -154,13 +154,11 @@ const styles = StyleSheet.create({
   },
   innerContainer: {
     flex: 1,
-    flexDirection: 'column',
+    paddingHorizontal: 10,
+    paddingVertical: 20,
     
   },
   searchSection: {
-    height: '7%',
-    marginHorizontal: '4%',
-    zIndex: 50,
     marginTop: '14%',
   
   },
@@ -168,8 +166,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    borderRadius: 50,
-    backgroundColor: 'rgba(255, 255, 255, 0.2)', // searchbar bgcolor
+    borderRadius: 30,
+    backgroundColor: 'rgba(255, 255, 255, 0.3)', // searchbar bgcolor
   },
   textInput: {
     paddingLeft: 16,
@@ -189,7 +187,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: '100%',
     backgroundColor: 'rgba(255, 255, 255, 0.8)',
-    borderRadius: 15,
+    borderRadius: 10,
     marginTop: 60,
     padding: 10,
   },
@@ -202,7 +200,7 @@ const styles = StyleSheet.create({
   },
   borderBottom: {
     borderBottomWidth: 2,
-    borderBottomColor: 'gray',
+    borderBottomColor: 'lightgray',
   },
   locationText: {
     marginLeft: 10,
@@ -210,6 +208,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
     fontSize: 28,
+  },
+  locationText1: {
+    marginLeft: 10,
+    fontSize: 16,
+    color: 'gray',
+    fontWeight: 'bold',
   },
   content: {
     flex: 1,
@@ -279,7 +283,8 @@ const styles = StyleSheet.create({
   },
   dailyForecastText: {
     color: 'white',
-    fontSize: 16,
+    fontSize: 17,
+    fontWeight: 'bold',
     marginLeft: 2,
     left: 8,
   },
@@ -289,21 +294,23 @@ const styles = StyleSheet.create({
   dailyForecastItem: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: 96,
-    borderRadius: 24,
+    width: 95,
+    borderRadius: 12,
     paddingVertical: 12,
     marginRight: 16,
+    
   },
   dailyForecastImage: {
-    height: 44,
-    width: 44,
+    height: 40,
+    width: 40,
   },
   dailyForecastDay: {
     color: 'white',
+    
   },
   dailyForecastTemp: {
     color: 'white',
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: '600',
   },
 });
