@@ -227,8 +227,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   weatherImage: {
-    height: 240,
-    width: 240,
+    height: 220,
+    width: 220,
     
   },
   temperatureContainer: {
