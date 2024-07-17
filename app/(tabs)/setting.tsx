@@ -1,5 +1,6 @@
 import { View, Text,StyleSheet,TouchableOpacity} from 'react-native'
 import React from 'react'
+import { SimpleLineIcons } from '@expo/vector-icons';
 
 export default function setting() {
 
@@ -11,12 +12,14 @@ export default function setting() {
           </TouchableOpacity>
           <TouchableOpacity style={styles.option}>
             <Text style={styles.text}>Temperature Unit</Text> 
+            <Text style={styles.subText}>Celsius/°C</Text>
+          <SimpleLineIcons name="arrow-right" size={12} color="rgba(0,0,0,0.6)" />
           </TouchableOpacity>
           <TouchableOpacity style={styles.option}>
             <Text style={styles.text}>Privacy Policy</Text> 
           </TouchableOpacity>
           <TouchableOpacity style={styles.option}>
-            <Text style={styles.text}>Weather</Text> 
+            <Text style={styles.text}>About</Text> 
           </TouchableOpacity>
         
       </View>
@@ -39,6 +42,10 @@ const styles = StyleSheet.create({
     color: 'rgba(0, 0, 0, 0.9)', 
     fontSize: 16, 
     fontWeight: '500', 
+  },
+  subText: {
+    color: 'rgba(0, 0, 0, 0.6)', // Subtext color
+    fontSize: 14, // Slightly smaller font size for subtext
   },
   textlite: {
     color: 'rgba(0, 0, 0, 0.4)',
