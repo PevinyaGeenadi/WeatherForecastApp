@@ -9,7 +9,11 @@ export default function TabLayout() {
           ),
         }}
       /> 
-     <Tabs.Screen name="setting" options={{ title: "Settings" , headerShown: false }} />
+    <Tabs.Screen name="setting" options={{ title: "Settings" ,headerShown: false, tabBarIcon: ({ color, size }) => (
+            <Ionicons name="settings" color={color} size={size} />
+          ),
+        }}
+      />
     </Tabs>
   );
 }
