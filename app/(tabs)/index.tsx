@@ -151,6 +151,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     height: '100%',
     width: '100%',
+    
   },
   innerContainer: {
     flex: 1,
@@ -159,7 +160,7 @@ const styles = StyleSheet.create({
     
   },
   searchSection: {
-    marginTop: '14%',
+    marginTop: '5%',
   
   },
   searchBar: {
@@ -238,6 +239,7 @@ const styles = StyleSheet.create({
   temperatureContainer: {
     alignItems: 'center',
     marginVertical: 2,
+    
     
   },
   temperatureText: {

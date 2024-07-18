@@ -7,9 +7,13 @@ export default function setting() {
   return (
     <View style={styles.main}>
       <View>
-          <TouchableOpacity style={styles.option}>
-            <Text style={styles.text}>Weather</Text> 
-          </TouchableOpacity>
+          <View style={styles.header}>
+             <TouchableOpacity style={styles.backButton}>
+                 <SimpleLineIcons name="arrow-left" size={20} color="rgba(0,0,0,0.9)" />
+             </TouchableOpacity>
+                  <Text style={styles.headerText}>Weather</Text> 
+          </View>
+
           <TouchableOpacity style={styles.option}>
             <Text style={styles.text}>Temperature Unit</Text> 
             <Text style={styles.subText}>Celsius/°C</Text>
@@ -17,9 +21,11 @@ export default function setting() {
           </TouchableOpacity>
           <TouchableOpacity style={styles.option}>
             <Text style={styles.text}>Privacy Policy</Text> 
+            <SimpleLineIcons name="arrow-right" size={12} color="rgba(0,0,0,0.6)" />
           </TouchableOpacity>
           <TouchableOpacity style={styles.option}>
             <Text style={styles.text}>About</Text> 
+            <SimpleLineIcons name="arrow-right" size={12} color="rgba(0,0,0,0.6)" />
           </TouchableOpacity>
         
       </View>
@@ -34,7 +40,7 @@ export default function setting() {
 const styles = StyleSheet.create({
   main: {
     flex: 1,
-    backgroundColor: 'lightblue', 
+    backgroundColor: 'rgba(255, 255, 240, 0.9)', 
     justifyContent: 'space-between',
     padding: 20, 
   },
@@ -43,9 +49,23 @@ const styles = StyleSheet.create({
     fontSize: 16, 
     fontWeight: '500', 
   },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 20, 
+    marginTop: 40,
+  },
+  backButton: {
+    marginRight: 10, 
+  },
+  headerText: {
+    fontSize: 20, 
+    fontWeight: 'bold', 
+    color: 'rgba(0, 0, 0, 0.9)',
+  },
   subText: {
-    color: 'rgba(0, 0, 0, 0.6)', // Subtext color
-    fontSize: 14, // Slightly smaller font size for subtext
+    color: 'rgba(0, 0, 0, 0.6)', 
+    fontSize: 13, 
   },
   textlite: {
     color: 'rgba(0, 0, 0, 0.4)',
