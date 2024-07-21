@@ -1,6 +1,7 @@
 import { View, Text,StyleSheet,TouchableOpacity} from 'react-native'
 import React from 'react'
 import { SimpleLineIcons } from '@expo/vector-icons';
+import { router } from 'expo-router';
 
 export default function setting() {
 
@@ -9,7 +10,8 @@ export default function setting() {
       <View>
           <View style={styles.header}>
              <TouchableOpacity style={styles.backButton}>
-                 <SimpleLineIcons name="arrow-left" size={20} color="rgba(0,0,0,0.9)" />
+                 <SimpleLineIcons name="arrow-left" size={20} color="rgba(0,0,0,0.9)" onPress={() => router.back()}/>
+                
              </TouchableOpacity>
                   <Text style={styles.headerText}>Weather</Text> 
           </View>
