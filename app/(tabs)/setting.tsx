@@ -1,9 +1,11 @@
 import { View, Text,StyleSheet,TouchableOpacity} from 'react-native'
 import React from 'react'
 import { SimpleLineIcons } from '@expo/vector-icons';
-import { router } from 'expo-router';
+import { router, useRouter } from 'expo-router';
 
 export default function setting() {
+  const router = useRouter();
+
   const handleNavigation = (route: string) => {
     router.push(route);
   };
@@ -18,7 +20,7 @@ export default function setting() {
                   <Text style={styles.headerText}>Weather</Text> 
           </View>
 
-          <TouchableOpacity style={styles.option} onPress={() => handleNavigation('/temperature-unit')}>
+          <TouchableOpacity style={styles.option} onPress={() => handleNavigation('/temperature-unit.tsx')}>
             <Text style={styles.text}>Temperature Unit</Text> 
             <Text style={styles.subText}>Celsius/°C</Text>
           <SimpleLineIcons name="arrow-right" size={12} color="rgba(0,0,0,0.6)" />
@@ -29,7 +31,7 @@ export default function setting() {
             <SimpleLineIcons name="arrow-right" size={12} color="rgba(0,0,0,0.6)" />
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.option}>
+          <TouchableOpacity style={styles.option} onPress={() => handleNavigation('/about')}>
             <Text style={styles.text}>About</Text> 
             <SimpleLineIcons name="arrow-right" size={12} color="rgba(0,0,0,0.6)" />
           </TouchableOpacity>
