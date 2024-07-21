@@ -4,27 +4,31 @@ import { SimpleLineIcons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 
 export default function setting() {
+  const handleNavigation = (route: string) => {
+    router.push(route);
+  };
 
   return (
     <View style={styles.main}>
       <View>
           <View style={styles.header}>
-             <TouchableOpacity style={styles.backButton}>
-                 <SimpleLineIcons name="arrow-left" size={20} color="rgba(0,0,0,0.9)" onPress={() => router.back()}/>
-                
-             </TouchableOpacity>
+             <TouchableOpacity style={styles.backButton}onPress={() => router.back()}>
+                 <SimpleLineIcons name="arrow-left" size={20} color="rgba(0,0,0,0.9)"/>
+            </TouchableOpacity>
                   <Text style={styles.headerText}>Weather</Text> 
           </View>
 
-          <TouchableOpacity style={styles.option}>
+          <TouchableOpacity style={styles.option} onPress={() => handleNavigation('/temperature-unit')}>
             <Text style={styles.text}>Temperature Unit</Text> 
             <Text style={styles.subText}>Celsius/°C</Text>
           <SimpleLineIcons name="arrow-right" size={12} color="rgba(0,0,0,0.6)" />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.option}>
+
+          <TouchableOpacity style={styles.option} onPress={() => handleNavigation('/privacy-policy')}>
             <Text style={styles.text}>Privacy Policy</Text> 
             <SimpleLineIcons name="arrow-right" size={12} color="rgba(0,0,0,0.6)" />
           </TouchableOpacity>
+
           <TouchableOpacity style={styles.option}>
             <Text style={styles.text}>About</Text> 
             <SimpleLineIcons name="arrow-right" size={12} color="rgba(0,0,0,0.6)" />
