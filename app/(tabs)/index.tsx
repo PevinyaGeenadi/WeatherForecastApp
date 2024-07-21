@@ -1,14 +1,42 @@
 import { View, Text, SafeAreaView,StyleSheet,StatusBar, Image,TextInput,TouchableOpacity, ScrollView } from 'react-native'
-import React , { useState }from 'react'
+import React, { useCallback, useState } from 'react';
 import { Ionicons,FontAwesome,FontAwesome5 } from '@expo/vector-icons';
 
+import { fetchLocations, fetchWeatherForecast } from '@/api/weatherService';
+import { weatherImages } from '@/constants/api';
+
+type WeatherCondition = {
+  [key: string]: any;
+};
 
 export default function index() {
   const [showSearch, toggleSearch] = useState(false);
-  const [locations, setLocations] = useState([1, 2, 3]);
-  const handleLocation = (loc: number) => {
+  const [locations, setLocations] = useState([]);
+  const [weather, setWeather] = useState({});
+
+  const handleLocation = (loc: any) => {
     console.log('Location: ', loc);
+    setLocations([]);
+    toggleSearch(false);
+    fetchWeatherForecast({ cityName: loc.name, days: 7 }).then(data => {
+      setWeather(data);
+      console.log('Weather Forecast: ', data);
+    })
   };
+
+  const handleSearch = (value: string) => {
+    if (value.length > 2) {
+      fetchLocations({ cityName: value }).then(data => {
+        setLocations(data);
+      });
+    } else {
+      setLocations([]);
+    }
+  };
+  const handleTextDebounce = useCallback(debounce(handleSearch,1200) ,[]);
+  
+  const { current, location } = weather as { current: any, location: any };
+
    return (
     
     <SafeAreaView style={ styles.container }>
@@ -29,6 +57,7 @@ export default function index() {
                 placeholder="Search city"
                 placeholderTextColor="lightgray"
                 style={styles.textInput}
+                onChangeText={handleSearch}
               />
             ) : null}
             <TouchableOpacity
@@ -39,7 +68,7 @@ export default function index() {
           </View>
             {locations.length > 0 && showSearch ? (
               <View style={styles.locationList}>
-                {locations.map((loc, index) => {
+                {locations.map((loc:any, index:number) => {
                   let showBorder = index !== locations.length - 1;
                   let borderClass = showBorder ? styles.borderBottom : {};
                   return (
@@ -48,7 +77,7 @@ export default function index() {
                       style={[styles.locationItem, borderClass]}
                       onPress={() => handleLocation(loc)}>
                       <FontAwesome name="map-marker" size={20} color="gray" />
-                      <Text style={styles.locationText1}>New York, USA</Text>
+                      <Text style={styles.locationText1}> {loc?.name},{loc?.region},{loc?.country}</Text>
                     </TouchableOpacity>
                   );
                 })}
@@ -59,17 +88,19 @@ export default function index() {
        <View style={styles.content}>
           {/* Display location */}
           <Text style={styles.locationText}>
-          New York,
-            <Text style={styles.subLocationText}> USA</Text>
+          {location?.name},
+            <Text style={styles.subLocationText}> 
+              {" "+ location?.region}, {location?.country}
+            </Text>
           </Text>
           {/* Weather icon image */}
           <View style={styles.imageContainer}>
-            <Image style={styles.weatherImage} source={require('../../assets/images/cloudy1.png')} />
+            <Image style={styles.weatherImage} source={(weatherImages as WeatherCondition)[current?.condition?.text]}/> 
           </View>
           {/* Temperature and weather description */}
           <View style={styles.temperatureContainer}>
-            <Text style={styles.temperatureText}>12&#176;</Text>
-            <Text style={styles.weatherDescription}>Partly Cloudy</Text>
+            <Text style={styles.temperatureText}>{current?.temp_c}&#176;</Text>
+            <Text style={styles.weatherDescription}>{current?.condition?.text}</Text>
           </View>
           {/* Weather statistics */}
           <View style={styles.statsContainer}>
@@ -316,3 +347,11 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
 });
+
+function debounce(fn: (value: string) => void, delay: number): (value: string) => void {
+  let timer: NodeJS.Timeout;
+  return (value: string) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => fn(value), delay);
+  };
+}
